@@ -1,0 +1,218 @@
+CREATE TABLE teams (
+    team_id INT AUTO_INCREMENT PRIMARY KEY,
+    team_name VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL,
+    coach VARCHAR(100),
+    founded_year INT,
+    stadium VARCHAR(100),
+    capacity INT
+);
+
+INSERT INTO teams (team_id, team_name, country, coach, founded_year, stadium, capacity) VALUES
+(1, 'Manchester United', 'England', 'Ole Gunnar Solskjaer', 1878, 'Old Trafford', 75653),
+(2, 'Real Madrid', 'Spain', 'Carlo Ancelotti', 1902, 'Santiago Bernabéu Stadium', 81044),
+(3, 'Bayern Munich', 'Germany', 'Julian Nagelsmann', 1900, 'Allianz Arena', 75000),
+(4, 'Juventus', 'Italy', 'Massimiliano Allegri', 1897, 'Allianz Stadium', 41065),
+(5, 'Paris Saint-Germain', 'France', 'Mauricio Pochettino', 1970, 'Parc des Princes', 48712),
+(6, 'Barcelona', 'Spain', 'Xavi Hernandez', 1899, 'Camp Nou', 99354),
+(7, 'Liverpool', 'England', 'Jurgen Klopp', 1892, 'Anfield', 53394),
+(8, 'Manchester City', 'England', 'Pep Guardiola', 1880, 'Etihad Stadium', 55017),
+(9, 'Chelsea', 'England', 'Thomas Tuchel', 1905, 'Stamford Bridge', 40834),
+(10, 'Atletico Madrid', 'Spain', 'Diego Simeone', 1903, 'Wanda Metropolitano', 68032),
+(11, 'AC Milan', 'Italy', 'Stefano Pioli', 1899, 'San Siro', 80018),
+(12, 'Borussia Dortmund', 'Germany', 'Marco Rose', 1909, 'Signal Iduna Park', 81365),
+(13, 'Ajax', 'Netherlands', 'Erik ten Hag', 1900, 'Johan Cruyff Arena', 54703),
+(14, 'Inter Milan', 'Italy', 'Simone Inzaghi', 1908, 'San Siro', 80018),
+(15, 'Arsenal', 'England', 'Mikel Arteta', 1886, 'Emirates Stadium', 60260),
+(16, 'Tottenham Hotspur', 'England', 'Antonio Conte', 1882, 'Tottenham Hotspur Stadium', 62849),
+(17, 'AS Roma', 'Italy', 'Jose Mourinho', 1927, 'Stadio Olimpico', 70244),
+(18, 'FC Porto', 'Portugal', 'Sergio Conceicao', 1893, 'Estádio do Dragão', 50476),
+(19, 'Napoli', 'Italy', 'Luciano Spalletti', 1926, 'Stadio Diego Armando Maradona', 54000),
+(20, 'Leicester City', 'England', 'Brendan Rodgers', 1884, 'King Power Stadium', 32312),
+(21, 'Everton', 'England', 'Frank Lampard', 1878, 'Goodison Park', 39454),
+(22, 'Sevilla', 'Spain', 'Julen Lopetegui', 1890, 'Ramón Sánchez Pizjuán Stadium', 43838),
+(23, 'Benfica', 'Portugal', 'Jorge Jesus', 1904, 'Estádio da Luz', 64715),
+(24, 'Boca Juniors', 'Argentina', 'Miguel Ángel Russo', 1905, 'La Bombonera', 54000),
+(25, 'Flamengo', 'Brazil', 'Renato Gaúcho', 1895, 'Estádio do Maracanã', 78838);
+
+CREATE TABLE players (
+    player_id INT AUTO_INCREMENT PRIMARY KEY,
+    player_name VARCHAR(100) NOT NULL,
+    nationality VARCHAR(100),
+    team_id INT,
+    position VARCHAR(50),
+    age INT,
+    height FLOAT,
+    weight FLOAT,
+    FOREIGN KEY (team_id) REFERENCES teams(team_id)
+);
+
+INSERT INTO players (player_id, player_name, nationality, team_id, position, age, height, weight) VALUES
+(1, 'Cristiano Ronaldo', 'Portuguese', 2, 'Forward', 37, 1.87, 84),
+(2, 'Lionel Messi', 'Argentine', 6, 'Forward', 34, 1.70, 72),
+(3, 'Robert Lewandowski', 'Polish', 3, 'Forward', 33, 1.84, 80),
+(4, 'Neymar Jr.', 'Brazilian', 5, 'Forward', 30, 1.75, 68),
+(5, 'Kevin De Bruyne', 'Belgian', 8, 'Midfielder', 30, 1.81, 70),
+(6, 'Kylian Mbappe', 'French', 5, 'Forward', 23, 1.78, 73),
+(7, 'Mohamed Salah', 'Egyptian', 7, 'Forward', 29, 1.75, 71),
+(8, 'Erling Haaland', 'Norwegian', 12, 'Forward', 21, 1.94, 88),
+(9, 'Harry Kane', 'English', 16, 'Forward', 28, 1.88, 86),
+(10, 'Romelu Lukaku', 'Belgian', 14, 'Forward', 28, 1.91, 94),
+(11, 'Luis Suarez', 'Uruguayan', 10, 'Forward', 35, 1.82, 86),
+(12, 'Sadio Mane', 'Senegalese', 7, 'Forward', 29, 1.75, 69),
+(13, 'Karim Benzema', 'French', 2, 'Forward', 34, 1.85, 81),
+(14, 'Gareth Bale', 'Welsh', 2, 'Forward', 32, 1.85, 81),
+(15, 'Virgil van Dijk', 'Dutch', 7, 'Defender', 30, 1.93, 92),
+(16, 'Alisson Becker', 'Brazilian', 7, 'Goalkeeper', 29, 1.93, 91),
+(17, 'Eden Hazard', 'Belgian', 6, 'Forward', 31, 1.75, 74),
+(18, 'Trent Alexander-Arnold', 'English', 7, 'Defender', 23, 1.78, 69),
+(19, 'Raheem Sterling', 'English', 8, 'Forward', 27, 1.70, 69),
+(20, 'Joshua Kimmich', 'German', 3, 'Midfielder', 27, 1.76, 73),
+(21, 'Bruno Fernandes', 'Portuguese', 1, 'Midfielder', 27, 1.83, 84),
+(22, 'Jamie Vardy', 'English', 20, 'Forward', 35, 1.79, 74),
+(23, 'Marcus Rashford', 'English', 16, 'Forward', 24, 1.85, 70),
+(24, 'Edinson Cavani', 'Uruguayan', 7, 'Forward', 35, 1.84, 71),
+(25, 'Paul Pogba', 'French', 8, 'Midfielder', 29, 1.91, 84);
+
+CREATE TABLE matches (
+    match_id INT AUTO_INCREMENT PRIMARY KEY,
+    home_team_id INT,
+    away_team_id INT,
+    match_date DATE,
+    stadium VARCHAR(100),
+    result VARCHAR(50),
+    FOREIGN KEY (home_team_id) REFERENCES teams(team_id),
+    FOREIGN KEY (away_team_id) REFERENCES teams(team_id)
+);
+
+
+INSERT INTO matches (match_id, home_team_id, away_team_id, match_date, stadium, result) VALUES 
+(1, 2, 6, '2022-01-01', 'Santiago Bernabeu', '3-1'), 
+(2, 3, 5, '2022-01-02', 'Allianz Arena', '2-2'), 
+(3, 7, 4, '2022-01-03', 'Anfield', '1-0'), 
+(4, 8, 10, '2022-01-04', 'Signal Iduna Park', '4-2'), 
+(5, 9, 12, '2022-01-05', 'Old Trafford', '2-1'), 
+(6, 14, 15, '2022-01-06', 'Parc des Princes', '3-0'), 
+(7, 17, 20, '2022-01-07', 'Stamford Bridge', '0-0'), 
+(8, 18, 19, '2022-01-08', 'Anfield', '2-1'), 
+(9, 21, 22, '2022-01-09', 'Estádio da Luz', '2-2'), 
+(10, 23, 24, '2022-01-10', 'King Power Stadium', '1-1'), 
+(11, 25, 1, '2022-01-11', 'San Siro', '3-2'), 
+(12, 4, 2, '2022-01-12', 'Parc Olympique Lyonnais', '1-1'), 
+(13, 5, 3, '2022-01-13', 'Santiago Bernabeu', '0-3'), 
+(14, 6, 7, '2022-01-14', 'Allianz Arena', '2-2'), 
+(15, 8, 9, '2022-01-15', 'Anfield', '2-0'), 
+(16, 10, 11, '2022-01-16', 'Signal Iduna Park', '0-1'), 
+(17, 12, 14, '2022-01-17', 'Old Trafford', '1-2'), 
+(18, 15, 17, '2022-01-18', 'Parc des Princes', '3-1'), 
+(19, 18, 21, '2022-01-19', 'Stamford Bridge', '2-2'), 
+(20, 19, 23, '2022-01-20', 'Anfield', '0-1'), 
+(21, 20, 25, '2022-01-21', 'Estádio da Luz', '1-0'), 
+(22, 1, 4, '2022-01-22', 'King Power Stadium', '2-2'), 
+(23, 2, 5, '2022-01-23', 'San Siro', '4-1'), 
+(24, 3, 6, '2022-01-24', 'Parc Olympique Lyonnais', '3-3'), 
+(25, 7, 8, '2022-01-25', 'Santiago Bernabeu', '1-0');
+
+CREATE TABLE goals (
+    goal_id INT AUTO_INCREMENT PRIMARY KEY,
+    match_id INT,
+    player_id INT,
+    minute_scored INT,
+    FOREIGN KEY (match_id) REFERENCES matches(match_id),
+    FOREIGN KEY (player_id) REFERENCES players(player_id)
+);
+
+INSERT INTO goals (match_id, player_id, minute_scored) VALUES
+(1, 1, 12),
+(1, 3, 25),
+(2, 2, 8),
+(2, 4, 47),
+(3, 5, 36),
+(3, 7, 55),
+(4, 6, 18),
+(4, 8, 60),
+(5, 9, 4),
+(5, 11, 31),
+(6, 10, 22),
+(6, 12, 57),
+(7, 13, 15),
+(7, 15, 48),
+(8, 14, 9),
+(8, 16, 42),
+(9, 17, 27),
+(9, 19, 53),
+(10, 18, 35),
+(10, 20, 59),
+(11, 21, 7),
+(11, 23, 38),
+(12, 22, 16),
+(12, 24, 45),
+(13, 25, 20);
+
+CREATE TABLE referees (
+    referee_id INT AUTO_INCREMENT PRIMARY KEY,
+    referee_name VARCHAR(100) NOT NULL,
+    nationality VARCHAR(100)
+);
+
+INSERT INTO referees (referee_name, nationality) VALUES
+('John Smith', 'England'),
+('Maria Garcia', 'Spain'),
+('Ahmed Ali', 'Egypt'),
+('Anna Müller', 'Germany'),
+('David Johnson', 'United States'),
+('Sophie Dupont', 'France'),
+('Luca Rossi', 'Italy'),
+('Javier Fernandez', 'Mexico'),
+('Hans Schmidt', 'Switzerland'),
+('Linda Andersen', 'Denmark'),
+('Mohammed Khan', 'Pakistan'),
+('Elena Ivanova', 'Russia'),
+('Pedro Martinez', 'Argentina'),
+('Yuki Tanaka', 'Japan'),
+('Marta Silva', 'Portugal'),
+('Kim Min-woo', 'South Korea'),
+('Anita Petrovic', 'Croatia'),
+('Rajesh Patel', 'India'),
+('Helena Nyqvist', 'Sweden'),
+('Abdullah Al-Farsi', 'Saudi Arabia'),
+('Katya Petrova', 'Bulgaria'),
+('Cesar Gutierrez', 'Colombia'),
+('Zhang Wei', 'China'),
+('Jan Novák', 'Czech Republic');
+
+CREATE TABLE leagues (
+    league_id INT AUTO_INCREMENT PRIMARY KEY,
+    league_name VARCHAR(100) NOT NULL,
+    country VARCHAR(100)
+);
+
+INSERT INTO leagues (league_name, country) VALUES
+('Premier League', 'England'),
+('La Liga', 'Spain'),
+('Bundesliga', 'Germany'),
+('Serie A', 'Italy'),
+('Ligue 1', 'France'),
+('Primeira Liga', 'Portugal'),
+('Eredivisie', 'Netherlands'),
+('Brasileirão Série A', 'Brazil'),
+('Argentine Primera División', 'Argentina'),
+('Russian Premier League', 'Russia'),
+('Major League Soccer', 'United States'),
+('Campeonato Brasileiro Série A', 'Brazil'),
+('Belgian Pro League', 'Belgium'),
+('Super Lig', 'Turkey'),
+('Scottish Premiership', 'Scotland'),
+('Greek Super League', 'Greece'),
+('Chinese Super League', 'China'),
+('J1 League', 'Japan'),
+('Australian A-League', 'Australia'),
+('Mexican Liga MX', 'Mexico'),
+('Saudi Professional League', 'Saudi Arabia'),
+('Ukrainian Premier League', 'Ukraine'),
+('Indian Super League', 'India'),
+('South African Premier Division', 'South Africa');
+
+mysql -u root -p Chinook < C:\Users\Keshav Jha\Downloads\Chinook_MySql.sql
+
+
